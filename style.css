@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=M+PLUS+2:wght@300;600&family=Oswald:wght@700&family=Roboto+Mono:wght@300&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0%;
+  font-family: "M PLUS 2", sans-serif;
+  color: aliceblue;
+  height: 100vh;
+  background-size: contain;
+  background-image: url("images/image.jpg"), url("paper.gif");
+  background-color: #cccccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+.music-container {
+  border-radius: 5px;
+  box-shadow: 0 20px 20px 0 rgba(255, 255, 255, 0.15);
+  display: flex;
+  padding: 20 px 30px;
+  position: relative;
+  margin: 100px 0;
+  z-index: 10;
+}
+
+.img-container {
+  position: relative;
+  width: 110px;
+}
+
+.img-container img {
+  width: inherit;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: absolute;
+  bottom: unset;
+  left: 0;
+
+  animation: rotate 3s linear infinite;
+
+  animation-play-state: paused;
+}
+.music-container.play .img-container img {
+  animation-play-state: running;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.img-container::after {
+  content: "";
+  background-color: rgb(220, 212, 223);
+  height: 15px;
+  width: 15px;
+  position: absolute;
+  left: 50%;
+  bottom: 45%;
+  border-radius: 50%;
+  transform: translate(0.1%, 150%);
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.action-btn {
+  border: 0;
+  color: rgba(20, 101, 200, 0.55);
+  background: rgba(77, 66, 66, 0.112);
+  backdrop-filter: blur(0px);
+  font-size: 20px;
+  cursor: pointer;
+  padding: 10px;
+  margin: 0 20px;
+}
+
+.action-btn-big {
+  color: rgb(126, 143, 154);
+
+  font-size: 30px;
+}
+.action-btn-focus:focus {
+  outline: 0;
+}
+
+.music-info {
+  background-color: none;
+  background: rgba(19, 18, 18, 0.571);
+  backdrop-filter: blur(0.5px);
+  border-radius: 15px 15px 0 0;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  width: calc(100% -40px);
+  opacity: 0;
+  transform: translateY(0%);
+  padding: 10px 10px 10px 150px;
+  transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+}
+.music-info h4 {
+  margin: 0;
+  font: small;
+}
+
+.music-container.play .music-info {
+  opacity: 1;
+  transform: translateY(-100%);
+}
+
+.progress-container {
+  background: rgba(215, 232, 232, 0.05);
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 0;
+  height: 4px;
+  width: 100%;
+}
+
+.progress {
+  background-color: rgba(14, 131, 157, 0.564);
+  border-radius: 5px;
+  height: 100%;
+  width: 0;
+  transition: width 0.1s linear;
+}
